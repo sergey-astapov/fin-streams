@@ -1,0 +1,32 @@
+Build dockers:
+--------------
+
+cd docker-zookeeper-multi
+docker build . -t zookeeper-multi
+
+cd docker-kafka-1
+docker build . -t asa/kafka_1
+
+cd docker-kafka-2
+docker build . -t asa/kafka_2
+
+Scenario: 2K + 2ZK
+-------------------
+-------------------
+
+Local run:
+----------
+
+IP-address: 192.168.1.94
+
+docker rm -f $(docker ps -a -q)
+
+docker run -d -p 12181:2181 -p 12888:2888 -p 13888:3888 -e ZOOKEEPER_ID=1 -e ZOOKEEPER_SERVER_1=192.168.1.94 -e ZOOKEEPER_SERVER_2=192.168.1.94:22888:23888 zookeeper-multi
+docker run -d -p 22181:2181 -p 22888:2888 -p 23888:3888 -e ZOOKEEPER_ID=2 -e ZOOKEEPER_SERVER_1=192.168.1.94:12888:13888 -e ZOOKEEPER_SERVER_2=192.168.1.94 zookeeper-multi
+
+docker run -d --name kafka_1 -p 17203:17203 -p 19092:19092 -e JMX_PORT=17203 -e KAFKA_PORT=19092 -e KAFKA_ADVERTISED_HOST_NAME=192.168.1.94 -e KAFKA_ADVERTISED_PORT=19092 -e KAFKA_BROKER_ID=1 -e ZOOKEEPER_CONNECTION_STRING=192.168.1.94:12181,192.168.1.94:22181 asa/kafka_1
+docker run -d --name kafka_2 -p 27203:27203 -p 29092:29092 -e JMX_PORT=27203 -e KAFKA_PORT=29092 -e KAFKA_ADVERTISED_HOST_NAME=192.168.1.94 -e KAFKA_ADVERTISED_PORT=29092 -e KAFKA_BROKER_ID=2 -e ZOOKEEPER_CONNECTION_STRING=192.168.1.94:12181,192.168.1.94:22181 asa/kafka_2
+
+kafkacat -L -b 192.168.1.94:19092
+kafkacat -P -b 192.168.1.94:19092 -t topic-dev -T
+kafkacat -C -b 192.168.1.94:19092 -t topic-dev
