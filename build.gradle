@@ -1,0 +1,93 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        mavenCentral()
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+allprojects {
+    apply plugin: 'scala'
+    apply plugin: 'idea'
+    apply plugin: 'java'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    def scalaMajor = '2.12'
+    def scalaMinor = '4'
+    def logbackVersion = '1.1.7'
+    def slf4jVersion = '1.7.22'
+    def kafkaVersion = '1.0.0'
+
+    dependencies {
+        compile(
+                "org.scala-lang:scala-library:$scalaMajor.$scalaMinor",
+                "com.typesafe.scala-logging:scala-logging_$scalaMajor:3.9.2",
+                "ch.qos.logback:logback-core:$logbackVersion",
+                "ch.qos.logback:logback-classic:$logbackVersion",
+                "org.slf4j:slf4j-api:$slf4jVersion",
+
+                //
+                "org.apache.commons:commons-lang3:3.4",
+                "commons-io:commons-io:2.6",
+
+                //
+                "org.scala-lang.modules:scala-xml_$scalaMajor:1.2.0",
+
+                //kafka streams
+                "org.apache.kafka:connect-api:$kafkaVersion",
+                "org.apache.kafka:kafka-streams:$kafkaVersion",
+                "org.apache.kafka:kafka-clients:$kafkaVersion"
+        )
+
+        testCompile(
+                "junit:junit:4.12",
+                "org.scalatest:scalatest_$scalaMajor:3.0.1"
+        )
+    }
+
+    task wrapper(type: Wrapper) {
+        gradleVersion = '3.5'
+    }
+
+    task spec(dependsOn: ['testClasses'], type: JavaExec) {
+        main = 'org.scalatest.tools.Runner'
+        args = ['-R', 'build/classes/test', '-o']
+        classpath = sourceSets.test.runtimeClasspath
+    }
+
+    build.dependsOn spec
+
+    assemble.dependsOn spec
+
+    sourceSets {
+        main {
+            scala {
+                srcDirs = [
+                        'src/main/scala',
+                        'src/main/java'
+                ]
+            }
+            java {
+                srcDirs = []
+            }
+        }
+    }
+
+    jar {
+        baseName = 'fin-streams'
+        version =  '0.0.1-SNAPSHOT'
+        manifest {
+            attributes 'Main-Class': 'io.fin.streams.PaymentStreamsApp'
+        }
+        from {
+            configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+        }
+    }
+}

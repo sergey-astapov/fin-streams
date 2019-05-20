@@ -1,2 +1,2 @@
-# fin4j
-fin4j is an open source Java library for managing fin messages.
+# fin-streams
+fin-streams is Kafka-stream based processing for fin messages.

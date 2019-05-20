@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<notifyCorporateFinancialTransactionRequest xmlns:tns="http://schema.ebbs.scb/RTA/" xmlns:ns="http://www.sc.com/SCBML-1">
+  <ns:header>
+    <ns:messageDetails>
+      <ns:messageVersion>1.0</ns:messageVersion>
+      <ns:messageType>
+        <ns:typeName>CoreBanking:TransactionAlert</ns:typeName>
+        <ns:subType>
+          <ns:subTypeName>notifyCorporateFinancialTransaction</ns:subTypeName>
+        </ns:subType>
+      </ns:messageType>
+    </ns:messageDetails>
+    <ns:originationDetails>
+      <ns:messageSender>
+        <ns:messageSender>Hogan</ns:messageSender>
+        <ns:senderDomain>
+          <ns:domainName>CoreBanking</ns:domainName>
+          <ns:subDomainName>
+            <ns:subDomainType></ns:subDomainType>
+          </ns:subDomainName>
+        </ns:senderDomain>
+        <ns:countryCode>HK</ns:countryCode>
+      </ns:messageSender>
+      <ns:messageTimestamp>2019-05-16T09:44:31.696+08:00</ns:messageTimestamp>
+      <ns:initiatedTimestamp>2019-05-16T09:44:31.696+08:00</ns:initiatedTimestamp>
+      <ns:trackingId>447094058820000000040</ns:trackingId>
+      <ns:correlationID>2a716725-7786-4076-b0f2-e0779e73afaa</ns:correlationID>
+      <ns:encoding>utf-8</ns:encoding>
+      <ns:possibleDuplicate>FALSE</ns:possibleDuplicate>
+    </ns:originationDetails>
+    <ns:captureSystem>EDMI</ns:captureSystem>
+    <ns:process>
+      <ns:processName>notifyCorporateFinancialTransaction</ns:processName>
+      <ns:eventType>Notify</ns:eventType>
+    </ns:process>
+    <ns:messageHistory>
+      <ns:timestamp>2019-05-16T09:44:31.696+08:00</ns:timestamp>
+      <ns:logMessage/>
+      <ns:messageSource>Hogan</ns:messageSource>
+    </ns:messageHistory>
+  </ns:header>
+  <ns:notifyCorporateFinancialTransactionReqPayload>
+    <ns:payloadFormat/>
+    <ns:payloadVersion/>
+    <tns:notifyCorporateFinancialTransactionReq>
+      <tns:TransactionDetails>
+        <tns:TransactionEntry>
+          <tns:TransactionBranch>000</tns:TransactionBranch>
+          <tns:ChannelID>     </tns:ChannelID>
+          <tns:BatchEntryDate>2019-05-16T00:00:00.000+08:00</tns:BatchEntryDate>
+          <tns:BatchNo/>
+          <tns:SeqNo/>
+          <tns:Account>
+            <tns:CurrencyCode>HKD</tns:CurrencyCode>
+            <tns:AccountNo>44709405882                       </tns:AccountNo>
+            <tns:ShortName/>
+          </tns:Account>
+          <tns:AccountBranch>000</tns:AccountBranch>
+          <tns:TrnCode>
+            <tns:Code>08243</tns:Code>
+            <tns:Desc>                                        </tns:Desc>
+          </tns:TrnCode>
+          <tns:TrnAmount>             1.060</tns:TrnAmount>
+          <tns:CreditDebitFlag>C</tns:CreditDebitFlag>
+          <tns:ValueDate>2019-05-16T00:00:00.000+08:00</tns:ValueDate>
+          <tns:Narrations>
+            <tns:Narration1>                                                                 </tns:Narration1>
+            <tns:Narration2>                                                                 </tns:Narration2>
+            <tns:Narration3>                                                                 </tns:Narration3>
+            <tns:Narration4>                                                                 </tns:Narration4>
+            <tns:Narration5>                                                                 </tns:Narration5>
+            <tns:Narration6>                                                                 </tns:Narration6>
+          </tns:Narrations>
+          <tns:ExtendedNarrations>
+            <tns:Narration1/>
+            <tns:Narration3>  </tns:Narration3>
+          </tns:ExtendedNarrations>
+          <tns:SegmentCode/>
+          <tns:MasterNo/>
+          <tns:CustomerRate>           </tns:CustomerRate>
+          <tns:ChequeNo>000000</tns:ChequeNo>
+          <tns:SysGenFlag/>
+          <tns:ForcePostFlag/>
+          <tns:AppInsFlag/>
+          <tns:FinancialTrnflag/>
+          <tns:IntAcEntryFlag/>
+          <tns:AdvTreasuryFlag/>
+          <tns:MakerDetails>
+            <tns:ID>36901</tns:ID>
+          </tns:MakerDetails>
+          <tns:ApproverDetails>
+            <tns:ID/>
+            <tns:Time>09:44:32.000+08:00</tns:Time>
+          </tns:ApproverDetails>
+          <tns:Statusflag/>
+          <tns:Reversalflag>N</tns:Reversalflag>
+          <tns:TrnReference>
+            <tns:CurrencyCode>HKD</tns:CurrencyCode>
+            <tns:AccountNo/>
+          </tns:TrnReference>
+          <tns:ApprvSeqno>447094058820000000040</tns:ApprvSeqno>
+          <tns:PALProdInd/>
+          <tns:VirtualAccountNo>                                  </tns:VirtualAccountNo>
+          <tns:BalanceDetails>
+            <tns:Ledger>           116.650</tns:Ledger>
+            <tns:AvailableWithOutLimit>           116.650</tns:AvailableWithOutLimit>
+            <tns:AvailableWithLimit>           116.650</tns:AvailableWithLimit>
+          </tns:BalanceDetails>
+          <tns:RelDetails>
+            <tns:RelationshipNo>11EBUHK           </tns:RelationshipNo>
+          </tns:RelDetails>
+          <tns:SwiftAddress>SCBLHKHHXXX</tns:SwiftAddress>
+          <tns:CurrencyNo/>
+          <tns:Paydtl>
+            <tns:SenderRefno>                </tns:SenderRefno>
+            <tns:OrdCustName>                                   </tns:OrdCustName>
+            <tns:OrdCustAddr1>                                   </tns:OrdCustAddr1>
+            <tns:OrdCustAddr2>                                   </tns:OrdCustAddr2>
+            <tns:OrdCustAddr3>                                   </tns:OrdCustAddr3>
+            <tns:BnfCustName>                                                  </tns:BnfCustName>
+            <tns:DraftNo>          </tns:DraftNo>
+            <tns:RemitAmount>                  </tns:RemitAmount>
+            <tns:RemitCurrency>   </tns:RemitCurrency>
+            <tns:BenName>                                                                                                         </tns:BenName>
+            <tns:BenAccountNo>               </tns:BenAccountNo>
+            <tns:BenBank>                                   </tns:BenBank>
+            <tns:CustRef>                </tns:CustRef>
+            <tns:ChargeCode>   </tns:ChargeCode>
+            <tns:BnfCustAddr1>                                                  </tns:BnfCustAddr1>
+            <tns:BnfCustAddr2>                                                  </tns:BnfCustAddr2>
+            <tns:BnfCustAddr3>                                                  </tns:BnfCustAddr3>
+          </tns:Paydtl>
+          <tns:TrnPostingMode>O</tns:TrnPostingMode>
+          <tns:TrnPostingSeq>000000</tns:TrnPostingSeq>
+          <tns:AddlTrnDescription>FPS QR PRABHAKARAN VISH HKIBK02-A3173714    </tns:AddlTrnDescription>
+          <tns:SupplementaryTrnDescription>                                    </tns:SupplementaryTrnDescription>
+          <tns:PaymentDetail>
+            <tns:PaymentDetail1>                                   </tns:PaymentDetail1>
+            <tns:PaymentDetail2>                                   </tns:PaymentDetail2>
+            <tns:PaymentDetail3>                                   </tns:PaymentDetail3>
+            <tns:PaymentDetail4>                                   </tns:PaymentDetail4>
+          </tns:PaymentDetail>
+        </tns:TransactionEntry>
+      </tns:TransactionDetails>
+    </tns:notifyCorporateFinancialTransactionReq>
+  </ns:notifyCorporateFinancialTransactionReqPayload>
+</notifyCorporateFinancialTransactionRequest>
